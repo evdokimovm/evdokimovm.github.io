@@ -253,7 +253,7 @@ http://localhost:8080/save/JavaScript is Awesome
 
 Output
 
-![SAVE](http://i.imgur.com/Vqn0VjQ.png)
+![SAVE](https://i.imgur.com/Vqn0VjQ.png)
 
 > For convenient viewing of JSON in your browser, you can use [JSONView Chrome Extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?utm_source=chrome-ntp-icon)
 
@@ -271,7 +271,7 @@ http://localhost:8080/find/JavaScript is Awesome
 
 Output
 
-![FIND](http://i.imgur.com/V3FxGI6.png)
+![FIND](https://i.imgur.com/V3FxGI6.png)
 
 #### Use MongoDB Driver
 

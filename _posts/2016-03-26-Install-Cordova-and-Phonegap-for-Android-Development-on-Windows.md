@@ -37,7 +37,7 @@ This can be as simple as downloading, double-clicking on the downloaded file, an
 
 > If you use 64-bit Windows download JDK x64.
 
-![JDK](http://i.imgur.com/7kgZqRN.png)
+![JDK](https://i.imgur.com/7kgZqRN.png)
 
 > During installation, just follow the instructions and do not change anything.
 
@@ -45,11 +45,11 @@ After JDK install is complete you need to add new **JAVA_HOME** system variable 
 
 Open **Control Panel > System and Security > System > Advanced System Settings**. Then in **System Properties** window select the **Advanced tab** and click the **Environment Variables** button. In the list **System Variables** click button **New...** then in **Variable name** field add **JAVA_HOME** and in **Variable value** field add path to your JDK. Click OK. It looks like this:
 
-![JAVA_HOME](http://i.imgur.com/YQhVhO0.png)
+![JAVA_HOME](https://i.imgur.com/YQhVhO0.png)
 
 Next In the list **User variables** select **PATH** and click the **Edit** button. At the end of the field **Variable value**, add a semicolon and path to the bin directory of the JDK. Click OK. It looks like this:
 
-![JAVA_HOME_PATH](http://i.imgur.com/5l9F3ZJ.png).
+![JAVA_HOME_PATH](https://i.imgur.com/5l9F3ZJ.png).
 
 Now you can test the install. Open Command Prompt and use command 
 
@@ -73,13 +73,13 @@ So, download Android Studio from official web site [developer.android.com](http:
 
 Android Studio Installation is very simple and you just need to follow the instructions. But you should take note on Android SDK Installation Location.
 
-![SDK](http://i.imgur.com/GhxRmG6.png)
+![SDK](https://i.imgur.com/GhxRmG6.png)
 
 After Android Studio installation is complete you need to add new **ANDROID_HOME** system variable with path to your Android SDK.
 
 Open **Control Panel > System and Security > System > Advanced System Settings**. Then in **System Properties** window select the **Advanced tab** and click the **Environment Variables** button. In the list **System Variables** click button **New...** then in **Variable name** field add **ANDROID_HOME** and in **Variable value** field add path to your Android SDK. It looks like this
 
-![ANDROID_HOME](http://i.imgur.com/PBYgny4.png)
+![ANDROID_HOME](https://i.imgur.com/PBYgny4.png)
 
 Click OK.
 
@@ -92,7 +92,7 @@ C:\Users\User\AppData\Local\Android\sdk;C:\Users\User\AppData\Local\Android\sdk\
 
 It looks like this
 
-![PATH_SDK_TOOLS](http://i.imgur.com/EJbXNMU.png)
+![PATH_SDK_TOOLS](https://i.imgur.com/EJbXNMU.png)
 
 Click OK.
 
@@ -113,7 +113,7 @@ android
 
 for open Android SDK Manager.
 
-![ANDROID_SDK_MANAGER](http://i.imgur.com/XVXU5K5.png)
+![ANDROID_SDK_MANAGER](https://i.imgur.com/XVXU5K5.png)
 
 In the Android SDK Manager select to install
 
@@ -141,13 +141,13 @@ Note:
 
 [Cordova Android Supported API Levels](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support)
 
-![Cordova_Android_Supported_API_Levels](http://i.imgur.com/A9FEXrL.png)
+![Cordova_Android_Supported_API_Levels](https://i.imgur.com/A9FEXrL.png)
 
 [Understanding Android API Levels](https://developer.xamarin.com/guides/android/application_fundamentals/understanding_android_api_levels/)
 
 [Android Platform/API Version Distribution](http://developer.android.com/intl/ru/about/dashboards/index.html)
 
-![API_VERSIONS](http://i.imgur.com/MFcCN4u.png)
+![API_VERSIONS](https://i.imgur.com/MFcCN4u.png)
 
 #### Install Apache Ant
 
@@ -159,7 +159,7 @@ Now add new **ANT_HOME** system variable. I repeat instructions.
 
 Open **Control Panel > System and Security > System > Advanced System Settings**. Then in **System Properties** window select the **Advanced tab** and click the **Environment Variables** button. In the list **System Variables** click button **New...** then in **Variable name** field add **ANT_HOME** and in **Variable value** field add path where you extracted Apache Ant. It looks like this
 
-![ANT_HOME](http://i.imgur.com/rrrcZIJ.png)
+![ANT_HOME](https://i.imgur.com/rrrcZIJ.png)
 
 Click OK.
 
@@ -173,7 +173,7 @@ C:\Users\User\apache-ant-1.9.6\bin
 
 It looks like this
 
-![PATH_ANT_HOME](http://i.imgur.com/7ClJiEP.png)
+![PATH_ANT_HOME](https://i.imgur.com/7ClJiEP.png)
 
 Click OK.
 
@@ -273,13 +273,13 @@ I will be brief. If your CPU is not Intel, standard Android SDK emulator does no
 
 But there is good news. You will still be able to run Android SDK emulator if you create a new configuration of the virtual device with ARM CPU.
 
-![ANDROID_EMULATOR_ARM](http://i.imgur.com/3LKo8HI.png)
+![ANDROID_EMULATOR_ARM](https://i.imgur.com/3LKo8HI.png)
 
 To create a new virtual device open Command Prompt and run Android SDK Manager with command **android**. When the manager will be run open **Tools > Manage AVDs...** and click to **Create** button
 
-![OPEN_AVD_MANAGER](http://i.imgur.com/b1P77l5.png)
+![OPEN_AVD_MANAGER](https://i.imgur.com/b1P77l5.png)
 
-![AVD_MANAGER](http://i.imgur.com/60rZd6D.png)
+![AVD_MANAGER](https://i.imgur.com/60rZd6D.png)
 
 Disadvantages of Android SDK Emulator:
 

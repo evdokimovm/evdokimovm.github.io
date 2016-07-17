@@ -221,7 +221,7 @@ your code should look like this
 
 Then you can go to the application About page which should look like this:
 
-![About](http://i.imgur.com/l7vLYLP.png)
+![About](https://i.imgur.com/l7vLYLP.png)
 
 #### After create the template, we can begin to create the map and display some of sights points and your location point
 
@@ -528,6 +528,6 @@ getSightsPoints.success(function(data){
 Hooray! We ended up creating this application.
 Now if you run this application, you should see something like this
 
-![Final](http://i.imgur.com/wMo0Gfi.jpg)
+![Final](https://i.imgur.com/wMo0Gfi.jpg)
 
 #### In a separate article I will tell how to use the HTML5 Geolocation API

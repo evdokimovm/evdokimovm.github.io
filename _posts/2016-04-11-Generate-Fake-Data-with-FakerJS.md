@@ -265,4 +265,4 @@ Server up: http://localhost:3500
 
 * You Can Use [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-ntp-icon) Google Chrome Extension to see the result. To do this, open Postman and send GET Request to `http://localhost:3500/api`
 
-![POSTMAN](http://i.imgur.com/6uB5qvU.png)
+![POSTMAN](https://i.imgur.com/6uB5qvU.png)
