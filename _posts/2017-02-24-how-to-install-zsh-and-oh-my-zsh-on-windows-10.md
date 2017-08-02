@@ -141,8 +141,12 @@ This plugin provides syntax highlighting in terminal like in `Fish` shell.
 Open terminal and download `zsh-syntax-highlighting` plugin to `.oh-my-zsh` plugins directory using git:
 
 {% highlight text %}
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/user/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 {% endhighlight %}
+
+If `$ZSH_CUSTOM` variable exist and contains value (full path to `/.oh-my-zsh/custom` in this case) use its value, otherwise use `~/.oh-my-zsh/custom`.
+
+About `:-` (colon dash) you can read in this topic on stackoverflow: [Usage of :- (colon dash) in bash](https://stackoverflow.com/questions/10390406/usage-of-colon-dash-in-bash).
 
 Next to activate this plugin open `~/.zshrc` config file using `nano ~/.zshrc` and find the following text:
 
