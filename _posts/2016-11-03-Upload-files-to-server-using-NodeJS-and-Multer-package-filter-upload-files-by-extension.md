@@ -346,3 +346,153 @@ app.listen(port, function() {
 </body>
 </html>
 {% endhighlight %}
+
+#### Edited: August 1, 2017. Validate Files by Check Magic Numbers Before Write to File System.
+
+In the previous example, we checked the file after it uploaded to the file system and if file is not valid deleted it.
+
+Quote from previous chapter:
+
+> Since multer does not provide file data as a solution we can check the magic numbers after uploading the file to the server and if it does not match then delete this file from filesystem.
+
+Multer does not provide file data (we need buffer) if as storage we are using `multer.diskStorage()`. In this chapter I will tell how to check file signatures (magic numbers) before write file to the filesystem using `multer.memoryStorage()`.
+
+Remove this part of code:
+
+{% highlight js %}
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './uploads')
+    },
+    filename: function(req, file, callback) {
+        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+{% endhighlight %}
+
+and replace:
+
+{% highlight js %}
+var upload = multer({
+    storage: storage
+}).single('userFile')
+{% endhighlight %}
+
+with:
+
+{% highlight js %}
+var upload = multer({
+    storage: multer.memoryStorage()
+}).single('userFile')
+{% endhighlight %}
+
+Now every time we upload a file we will have `buffer` of entire file in `req`.
+
+We will check first bytes of `buffer` before write file to the filesystem and if the buffer is no valid the file will not be written to the file system.
+
+Replace:
+
+{% highlight js %}
+upload(req, res, function(err) {
+    var bitmap = fs.readFileSync('./uploads/' + req.file.filename).toString('hex', 0, 4)
+    if (!checkMagicNumbers(bitmap)) {
+        fs.unlinkSync('./uploads/' + req.file.filename)
+        res.end('File is no valid')
+    }
+    res.end('File is uploaded')
+})
+{% endhighlight %}
+
+with:
+
+{% highlight js %}
+upload(req, res, function (err) {
+    var buffer = req.file.buffer
+    var magic = buffer.toString('hex', 0, 4)
+    var filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+    if (checkMagicNumbers(magic)) {
+        fs.writeFile('./uploads/' + filename, buffer, 'binary', function (err) {
+            if (err) throw err
+                res.end('File is uploaded')
+        })
+    } else {
+        res.end('File is no valid')
+    }
+})
+{% endhighlight %}
+
+`buffer` variable contains `buffer` of the entire file, `magic` variable contains first bytes to check and `filename` contains name for write file in filesystem.
+
+If buffer is valid `if (checkMagicNumbers(magic))` file will be written to the filesystem using [fs.writeFile](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback). Otherwise user will have `File is no valid` message.
+
+Full code for this example:
+
+`server.js`
+
+{% highlight js %}
+var express = require("express")
+var multer = require('multer')
+var app = express()
+var path = require('path')
+var fs = require('fs')
+
+var ejs = require('ejs')
+app.set('view engine', 'ejs')
+
+var MAGIC_NUMBERS = {
+    jpg: 'ffd8ffe0',
+    jpg1: 'ffd8ffe1',
+    png: '89504e47',
+    gif: '47494638'
+}
+
+function checkMagicNumbers(magic) {
+    if (magic == MAGIC_NUMBERS.jpg || magic == MAGIC_NUMBERS.jpg1 || magic == MAGIC_NUMBERS.png || magic == MAGIC_NUMBERS.gif) return true
+}
+
+app.get('/api/file', function(req, res) {
+    res.render('index')
+})
+
+app.post('/api/file', function(req, res) {
+    var upload = multer({
+        storage: multer.memoryStorage()
+    }).single('userFile')
+    upload(req, res, function(err) {
+        var buffer = req.file.buffer
+        var magic = buffer.toString('hex', 0, 4)
+        var filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+        if (checkMagicNumbers(magic)) {
+            fs.writeFile('./uploads/' + filename, buffer, 'binary', function(err) {
+                if (err) throw err
+                res.end('File is uploaded')
+            })
+        } else {
+            res.end('File is no valid')
+        }
+    })
+})
+
+var port = process.env.PORT || 8080
+app.listen(port, function() {
+    console.log('Node.js listening on port ' + port)
+})
+{% endhighlight %}
+
+`views/index.ejs`
+
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form id="uploadForm" enctype="multipart/form-data" method="post">
+        <input type="file" name="userFile" />
+        <input type="submit" value="Upload File" name="submit">
+    </form>
+</body>
+</html>
+{% endhighlight %}
