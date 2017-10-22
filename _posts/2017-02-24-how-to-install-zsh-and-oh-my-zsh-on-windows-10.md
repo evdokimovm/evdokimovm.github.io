@@ -118,7 +118,9 @@ Since Windows 10 Fall Creators Update you can run WSL with `ubuntu` command and 
 
 So open `ubuntu` command in command prompt and use following command:
 
-`chsh -c /usr/bin/zsh`
+{% highlight text %}
+chsh -c /usr/bin/zsh
+{% endhighlight %}
 
 Each time when you will run `ubuntu` command then `zsh` will runs automatically as the default shell environment.
 
@@ -165,7 +167,7 @@ shell: 'C:\\Windows\\System32\\cmd.exe',
 and
 
 {% highlight text %}
-shellArgs: ['--login', '-i', '/k ubuntu'],
+shellArgs: ['--login', '-i', '/c wsl'],
 {% endhighlight %}
 
 respectively.
@@ -180,9 +182,13 @@ Why not just use path to `ubuntu.exe` file in hyper.is config?
 
 [**https://github.com/zeit/hyper/issues/2385**](https://github.com/zeit/hyper/issues/2385). BTW, if you need to find path to `ubuntu.exe`, open command prompt (default windows cmd not bash or ubuntu) and use `where ubuntu.exe` command.
 
-Thus I found solution: we can use `cmd.exe` in config and just run `ubuntu` as a command line argument. That's works.
+Thus I found solution: we can use `cmd.exe` in config and just run `wsl` as a command line argument. That's works.
 
-But there is a second way to solve:
+Also, note that in this case we are running `wsl.exe` not `ubuntu.exe` and this running Ubuntu because Ubuntu is current default "WSL OS". For example if you will install `openSUSE` from Windows Store and set as default then `wsl.exe` will run `openSUSE`.
+
+To understand what I mean, I recommend to reading article: [Manage multiple Linux Distributions in WSL](https://msdn.microsoft.com/en-us/commandline/wsl/wsl-config).
+
+There is a second way to solve:
 
 Add `bash -c zsh` to `~/.bashrc` file as I described above in `Configure and Run Oh My Zsh` part for users who have installed Windows 10 Build Less Than 16215.
 
