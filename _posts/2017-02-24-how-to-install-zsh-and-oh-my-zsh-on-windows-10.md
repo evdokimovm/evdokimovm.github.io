@@ -14,6 +14,8 @@ For this article you need to have Windows 10 x64 Version 1607 Build 14393 or hig
 
 ### Install Windows Subsystem for Linux
 
+**If you have installed Windows 10 Build Less Than 16215:**
+
 First, you need to install Windows Subsystem for Linux. Go to `Settings -> Update and Security -> For developers` and change `Sideload apps` setting to `Developer mode`
 
 ![DEVELOPER_MODE](https://i.imgur.com/pf6vpxN.png)
@@ -22,7 +24,25 @@ Next open command prompt and go to `OptionalFeatures.exe` and enable `Windows Su
 
 In the next time when you need to use bash shell open command prompt and use `bash` command.
 
-In more detail, this part is described in [Install Guide on the Microsoft official website](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+**If you have installed Windows 10 Version 1709 (Fall Creators Update) Build 16215 or Higher:**
+
+Go to `Settings -> Update and Security -> For developers` and change `Sideload apps` setting to `Developer mode`.
+
+Open command prompt and go to `OptionalFeatures.exe` and enable `Windows Subsystem for Linux` then reboot your PC.
+
+Since `Fall Creators Update` we need to install Windows Subsystem for Linux from [Windows Store](https://www.microsoft.com/store/apps).
+
+For now (21 October 2017) we have three Linux distributions in Windows Store to choose from:
+
+- [Ubuntu](https://www.microsoft.com/en-US/store/p/ubuntu/9nblggh4msv6?rtc=1)
+- [openSUSE Leap 42](https://www.microsoft.com/en-US/store/p/opensuse-leap-42/9njvjts82tjx?rtc=1)
+- [SUSE Linux Enterprise Server 12](https://www.microsoft.com/en-US/store/p/suse-linux-enterprise-server-12/9p32mwbh6cns?rtc=1)
+
+I recommend to install [Ubuntu](https://www.microsoft.com/en-US/store/p/ubuntu/9nblggh4msv6?rtc=1) to this article.
+
+Then after installing Ubuntu and rebooting PC you can run it with `bash` or `ubuntu` commands in command prompt.
+
+In more detail, this parts is described in [Installation Guide on the Microsoft Official Website](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
 
 ### Install Hyper Terminal
 
@@ -41,6 +61,8 @@ sudo apt-get install curl
 - Install Git:
 
 {% highlight text %}
+sudo apt-add-repository ppa:git-core/ppa
+sudo apt-get update
 sudo apt-get install git
 {% endhighlight %}
 
@@ -66,13 +88,15 @@ and wait until the installation is completed.
 
 ### Configure and Run Oh My Zsh
 
-Now each time when you need to use bash shell and zsh you need go to command prompt, use `bash` command and then use `zsh` command.
+Now each time when you need to use bash shell and zsh you need go to command prompt, use `bash` (or `ubuntu`) command and then use `zsh` command.
 
 Let's simplify it.
 
-Open bash terminal and use `nano ~/.bashrc` to open `.bashrc` config file.
+**If you have installed Windows 10 Build Less Than 16215:**
 
-[What is the purpose of .bashrc and how does it work?](http://unix.stackexchange.com/questions/129143/what-is-the-purpose-of-bashrc-and-how-does-it-work)
+Open bash terminal using `bash` command and use `nano ~/.bashrc` to open `.bashrc` config file.
+
+> Warning: [Do not change Linux files using Windows apps and tools](https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/)
 
 In start of that file add following command:
 
@@ -80,9 +104,7 @@ In start of that file add following command:
 bash -c zsh
 {% endhighlight %}
 
-> Note: You should not edit anything under %localappdata%\lxss (Directory of Windows Subsystem for Linux in Windows Filesystem) from a Windows editor at all. In this case use only nano or vim editor.
-
-My `.bashrc` file on [gist](https://gist.github.com/evdokimovm/67e4fcd938af98528aa108574626e522#file-bashrc-L5)
+Example: `.bashrc` file on [gist](https://gist.github.com/evdokimovm/67e4fcd938af98528aa108574626e522#file-bashrc-L5)
 
 Note that in this time if you will try to use "default" command `chsh -s /bin/zsh` in bash shell terminal it will not run zsh as default bash shell environment.
 
@@ -90,7 +112,21 @@ Look at this comment of Ben Hillis [@benhillis](https://github.com/benhillis) [h
 
 Now each time when you will use `bash` in command prompt zsh terminal will start automatically instead of bash shell.
 
+**If you have installed Windows 10 Version 1709 (Fall Creators Update) Build 16215 or Higher:**
+
+Since Windows 10 Fall Creators Update you can run WSL with `ubuntu` command and `chsh` command will works.
+
+So open `ubuntu` command in command prompt and use following command:
+
+`chsh -c /usr/bin/zsh`
+
+Each time when you will run `ubuntu` command then `zsh` will runs automatically as the default shell environment.
+
+Note that this still will not work if you will run the `bash` command.
+
 ### Configure and Run Hyper Terminal
+
+**If you have installed Windows 10 Build Less Than 16215:**
 
 After you installed Hyper Terminal open `%USERPROFILE%/.hyper.js` config file and replace line:
 
@@ -105,6 +141,62 @@ shell: 'C:\\Windows\\System32\\bash.exe',
 {% endhighlight %}
 
 Now each time when you will open hyper terminal it's will be use `zsh` as default shell environment.
+
+**If you have installed Windows 10 Version 1709 (Fall Creators Update) Build 16215 or Higher:**
+
+After you installed Hyper Terminal open `%USERPROFILE%/.hyper.js` config file and replace lines:
+
+{% highlight text %}
+shell: '',
+{% endhighlight %}
+
+and
+
+{% highlight text %}
+shellArgs: ['--login'],
+{% endhighlight %}
+
+with:
+
+{% highlight text %}
+shell: 'C:\\Windows\\System32\\cmd.exe',
+{% endhighlight %}
+
+and
+
+{% highlight text %}
+shellArgs: ['--login', '-i', '/k ubuntu'],
+{% endhighlight %}
+
+respectively.
+
+**Short Q&A:**
+
+**Question:**
+
+Why not just use path to `ubuntu.exe` file in hyper.is config?
+
+**Answer:**
+
+[**https://github.com/zeit/hyper/issues/2385**](https://github.com/zeit/hyper/issues/2385). BTW, if you need to find path to `ubuntu.exe`, open command prompt (default windows cmd not bash or ubuntu) and use `where ubuntu.exe` command.
+
+Thus I found solution: we can use `cmd.exe` in config and just run `ubuntu` as a command line argument. That's works.
+
+But there is a second way to solve:
+
+Add `bash -c zsh` to `~/.bashrc` file as I described above in `Configure and Run Oh My Zsh` part for users who have installed Windows 10 Build Less Than 16215.
+
+And replace:
+
+{% highlight text %}
+shell: '',
+{% endhighlight %}
+
+with
+
+{% highlight text %}
+shell: ''C:\\Windows\\System32\\bash.exe'',
+{% endhighlight %}
 
 Without installed themes for hyper this will looks like this:
 
