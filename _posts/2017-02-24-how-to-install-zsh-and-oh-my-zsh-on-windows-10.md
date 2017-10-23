@@ -108,13 +108,19 @@ Example: `.bashrc` file on [gist](https://gist.github.com/evdokimovm/67e4fcd938a
 
 Note that in this time if you will try to use "default" command `chsh -s /bin/zsh` in bash shell terminal it will not run zsh as default bash shell environment.
 
-Look at this comment of Ben Hillis [@benhillis](https://github.com/benhillis) [https://github.com/Microsoft/BashOnWindows/issues/1724#issuecomment-282420193](https://github.com/Microsoft/BashOnWindows/issues/1724#issuecomment-282420193)
+Look at this comment of Ben Hillis [@benhillis](https://github.com/benhillis) - [https://github.com/Microsoft/BashOnWindows/issues/1724#issuecomment-282420193](https://github.com/Microsoft/BashOnWindows/issues/1724#issuecomment-282420193)
 
-Now each time when you will use `bash` in command prompt zsh terminal will start automatically instead of bash shell.
+![GITHUB_COMMENT_1](https://i.imgur.com/6qAUxZu.png)
+
+Now each time when you will use `bash` in command prompt then `zsh` will start automatically instead of bash shell.
 
 **If you have installed Windows 10 Version 1709 (Fall Creators Update) Build 16215 or Higher:**
 
 Since Windows 10 Fall Creators Update you can run WSL with `ubuntu` command and `chsh` command will works.
+
+[https://github.com/Microsoft/BashOnWindows/issues/2199#issuecomment-334453644](https://github.com/Microsoft/BashOnWindows/issues/2199#issuecomment-334453644)
+
+![GITHUB_COMMENT_2](https://i.imgur.com/BeZ32Qm.png)
 
 So open `ubuntu` command in command prompt and use following command:
 
@@ -152,7 +158,7 @@ After you installed Hyper Terminal open `%USERPROFILE%/.hyper.js` config file an
 shell: '',
 {% endhighlight %}
 
-and
+and:
 
 {% highlight text %}
 shellArgs: ['--login'],
@@ -164,7 +170,7 @@ with:
 shell: 'C:\\Windows\\System32\\cmd.exe',
 {% endhighlight %}
 
-and
+and:
 
 {% highlight text %}
 shellArgs: ['--login', '-i', '/c wsl'],
@@ -172,23 +178,25 @@ shellArgs: ['--login', '-i', '/c wsl'],
 
 respectively.
 
+------
+
 **Short Q&A:**
 
-**Question:**
+- **Question:**
 
 Why not just use path to `ubuntu.exe` file in hyper.is config?
 
-**Answer:**
+- **Answer:**
 
 [**https://github.com/zeit/hyper/issues/2385**](https://github.com/zeit/hyper/issues/2385). BTW, if you need to find path to `ubuntu.exe`, open command prompt (default windows cmd not bash or ubuntu) and use `where ubuntu.exe` command.
 
-Thus I found solution: we can use `cmd.exe` in config and just run `wsl` as a command line argument. That's works.
+Solution: we can use `cmd.exe` in config and just run `wsl` as a command line argument. That's works.
 
 Also, note that in this case we are running `wsl.exe` not `ubuntu.exe` and this running Ubuntu because Ubuntu is current default "WSL OS". For example if you will install `openSUSE` from Windows Store and set as default then `wsl.exe` will run `openSUSE`.
 
 To understand what I mean, I recommend to reading article: [Manage multiple Linux Distributions in WSL](https://msdn.microsoft.com/en-us/commandline/wsl/wsl-config).
 
-There is a second way to solve:
+- **There is a second way to solve:**
 
 Add `bash -c zsh` to `~/.bashrc` file as I described above in `Configure and Run Oh My Zsh` part for users who have installed Windows 10 Build Less Than 16215.
 
@@ -198,11 +206,13 @@ And replace:
 shell: '',
 {% endhighlight %}
 
-with
+with:
 
 {% highlight text %}
-shell: ''C:\\Windows\\System32\\bash.exe'',
+shell: 'C:\\Windows\\System32\\bash.exe',
 {% endhighlight %}
+
+------
 
 Without installed themes for hyper this will looks like this:
 
