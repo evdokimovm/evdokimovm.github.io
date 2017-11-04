@@ -125,7 +125,7 @@ Since Windows 10 Fall Creators Update you can run WSL with `ubuntu` command and 
 So open `ubuntu` command in command prompt and use following command:
 
 {% highlight text %}
-chsh -c /usr/bin/zsh
+chsh -s /usr/bin/zsh
 {% endhighlight %}
 
 Each time when you will run `ubuntu` command then `zsh` will runs automatically as the default shell environment.
@@ -188,7 +188,26 @@ Why not just use path to `ubuntu.exe` file in hyper.is config?
 
 - **Answer:**
 
-[**https://github.com/zeit/hyper/issues/2385**](https://github.com/zeit/hyper/issues/2385). BTW, if you need to find path to `ubuntu.exe`, open command prompt (default windows cmd not bash or ubuntu) and use `where ubuntu.exe` command.
+You can just use `ubuntu.exe` or full path to `ubuntu.exe` without any shell arguments:
+
+{% highlight text %}
+shell: 'ubuntu.exe',
+shellArgs: [],
+{% endhighlight %}
+
+or
+
+{% highlight text %}
+shell: 'C:\Users\USERNAME\AppData\Local\Microsoft\WindowsApps\ubuntu.exe',
+shellArgs: [],
+{% endhighlight %}
+
+but in this case your hyper terminal will opens only in Ubuntu home directory.
+
+Links to related issues about this:
+
+- [**https://github.com/Microsoft/WSL/issues/2587**](https://github.com/Microsoft/WSL/issues/2587)
+- [**https://github.com/zeit/hyper/issues/2385**](https://github.com/zeit/hyper/issues/2385)
 
 Solution: we can use `cmd.exe` in config and just run `wsl` as a command line argument. That's works.
 
@@ -198,19 +217,14 @@ To understand what I mean, I recommend to reading article: [Manage multiple Linu
 
 - **There is a second way to solve:**
 
-Add `bash -c zsh` to `~/.bashrc` file as I described above in `Configure and Run Oh My Zsh` part for users who have installed Windows 10 Build Less Than 16215.
-
-And replace:
+Also you can just use `wsl.exe` without any shell arguments:
 
 {% highlight text %}
-shell: '',
+shell: 'wsl.exe',
+shellArgs: [],
 {% endhighlight %}
 
-with:
-
-{% highlight text %}
-shell: 'C:\\Windows\\System32\\bash.exe',
-{% endhighlight %}
+And that's works too.
 
 ------
 
