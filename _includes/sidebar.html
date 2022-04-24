@@ -1,7 +1,11 @@
 <!-- sidebar.html -->
 <header class="sidebar-header" role="banner">
 	<a href="{{ site.BASE_PATH }}/">
-		<img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}?s=150" class="img-circle" />
+	  {% if site.author.email_md5 %}
+			<img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}?s=150" class="img-circle" />
+	  {% elsif site.author.github %}
+			<img src="https://github.com/{{site.author.github}}.png" style="width: 150px; height: 150px;" />
+	  {% endif %}
 	</a>
 	<h3 class="title">
         <a href="{{ site.BASE_PATH }}/">{{ site.title }}</a>
@@ -30,10 +34,17 @@
 			</a>
 		</li>
 		{% endif %}
-		{% if site.author.email %}
+		{% if site.author.telegram %}
 		<li>
 			<a class="btn btn-default btn-sm" href="https://telegram.me/{{ site.author.telegram }}">
 				<i class="fa fa-paper-plane fa-lg"></i>
+			</a>
+		</li>
+		{% endif %}
+		{% if site.author.email %}
+		<li>
+			<a class="btn btn-default btn-sm" href="mailto:{{ site.author.email }}">
+				<i class="fa fa-envelope fa-lg"></i>
 			</a>
 		</li>
 		{% endif %}

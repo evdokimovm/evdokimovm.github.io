@@ -91,11 +91,19 @@
         </a>
       </section>
 
-      <section class="col-sm-6 author">
-        <img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}" class="img-rounded author-image" />
-        <h4 class="section-title author-name">{{site.author.name}}</h4>
-        <p class="author-bio">{{site.author.bio}}</p>
-      </section>
+	  {% if site.author.email_md5 %}
+	    <section class="col-sm-6 author">
+          <img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}" class="img-rounded author-image" />
+          <h4 class="section-title author-name">{{site.author.name}}</h4>
+          <p class="author-bio">{{site.author.bio}}</p>
+        </section>
+	  {% elsif site.author.github %}
+	    <section class="col-sm-6 author">
+          <img src="https://github.com/{{site.author.github}}.png" class="img-rounded author-image" />
+          <h4 class="section-title author-name">{{site.author.name}}</h4>
+          <p class="author-bio">{{site.author.bio}}</p>
+        </section>
+	  {% endif %}
     </div>
 
     <div class="clearfix"></div>

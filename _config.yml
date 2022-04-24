@@ -15,20 +15,19 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Mikhail Evdokimov - Web Developer from Vladivostok
-      description: I am Mikhail Evdokimov, a Web Developer and Perfectionist from Russia, Far East, Vladivostok. Enthusiast performance, responsive design and usability, always looking for the best project and good coffee. Love JavaScript and JavaScript Full Stack Development. MongoDB, ExpressJS, AngularJS, NodeJS. Also I can use a few Ruby and Lua for Corona SDK. In my blog, I plan to write not only about development but also about my other hobbies and interests.
+      title: Mikhail Evdokimov - Hobbyist Self Taught Programmer
+      description: I am Mikhail Evdokimov, Hobbyist Self Taught Programmer
 
-description: I am Mikhail Evdokimov, a Web Developer and Perfectionist from Russia, Far East, Vladivostok. Enthusiast performance, responsive design and usability, always looking for the best project and good coffee. Love JavaScript and JavaScript Full Stack Development. MongoDB, ExpressJS, AngularJS, NodeJS. Also I can use a few Ruby and Lua for Corona SDK. In my blog, I plan to write not only about development but also about my other hobbies and interests.
+description: I am Mikhail Evdokimov, Hobbyist Self Taught Programmer
 author:
   name: Mikhail
   email: tel89147925532@gmail.com
   github: evdokimovm
-  twitter: id194695811
-  telegram: evdokimovm
-  # pinterest: asd123
-  # linkedin: asd123
-  bio: I am Mikhail Evdokimov, a Web Developer and Perfectionist from Russia, Far East, Vladivostok. Enthusiast performance, responsive design and usability, always looking for the best project and good coffee. Love JavaScript and JavaScript Full Stack Development. MongoDB, ExpressJS, AngularJS, NodeJS. Also I can use a few Ruby and Lua for Corona SDK. In my blog, I plan to write not only about development but also about my other hobbies and interests.
-  email_md5: 6003aa0bd322ace03022108000a63cde
+  # telegram: null
+  # pinterest: null
+  # linkedin: null
+  bio: I am Mikhail Evdokimov, a Hobbyist Self Taught Programmer
+  # email_md5: 6003aa0bd322ace03022108000a63cde
 
 rss_path: feed.xml
 categories_path: categories.html

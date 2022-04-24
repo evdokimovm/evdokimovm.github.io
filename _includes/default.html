@@ -65,7 +65,11 @@
 			</a>
 			{% endif %}
 			<a class="navbar-brand" href="{{ site.BASE_PATH }}/">
-				<img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}?s=35" class="img-circle" />
+				{% if site.author.email_md5 %}
+					<img src="https://www.gravatar.com/avatar/{{site.author.email_md5}}?s=35" class="img-circle" />
+	  			{% elsif site.author.github %}
+					<img src="https://github.com/{{site.author.github}}.png" style="width: 35px; height: 35px;" />
+	  			{% endif %}
 				{{ site.title }}
 			</a>
 		</div>
