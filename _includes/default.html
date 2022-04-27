@@ -24,7 +24,7 @@
 
 	<!-- Le styles -->
 	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
 	<link href="{{ site.BASE_PATH }}/assets/resources/syntax/syntax.css" rel="stylesheet">
 	<link href="{{ site.BASE_PATH }}/assets/css/style.css" rel="stylesheet">
 
@@ -51,17 +51,17 @@
 			</button>
 			{% if site.author.github %}
 			<a type="button" class="navbar-toggle nav-link" href="https://github.com/{{ site.author.github }}">
-				<i class="fa fa-github"></i>
+				<i class="fab fa-github"></i>
 			</a>
 			{% endif %}
 			{% if site.author.twitter %}
 			<a type="button" class="navbar-toggle nav-link" href="https://twitter.com/{{ site.author.twitter }}">
-				<i class="fa fa-twitter"></i>
+				<i class="fab fa-twitter"></i>
 			</a>
 			{% endif %}
 			{% if site.author.telegram %}
 			<a type="button" class="navbar-toggle nav-link" href="https://telegram.me/{{ site.author.telegram }}">
-				<i class="fa fa-paper-plane"></i>
+				<i class="fab fa-telegram"></i>
 			</a>
 			{% endif %}
 			<a class="navbar-brand" href="{{ site.BASE_PATH }}/">
@@ -115,6 +115,5 @@
 
 	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/js/app.js"></script>
 </body>
 </html>
