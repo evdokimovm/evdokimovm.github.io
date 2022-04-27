@@ -30,7 +30,7 @@ I wouldn't want to use a whole Selenium browser emulator for such a simple task.
 
 The image IDs separated by comma as you can see on the following image, so each id in the string corresponds to each image in the gallery respectively. The item images on the search results page has same IDs as the images on the actual items page. The only resolution is actually changes, it's `300x300` for search results and `600x450` for full size. I'll use `300x300` in code examples.
 
-![IDS](https://i.imgur.com/jZET8mA.jpg)
+![IDS](https://i.imgur.com/qnUhkqS.png)
 
 So now let's get the IDs for each item iteratively and generate some `*.json` file contains the list of dictionaries that include title and list of all image links:
 
